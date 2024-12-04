@@ -15,10 +15,10 @@ Just add a `.devcontainer/devcontainer.json` file with a `features` key.
 
 ```json
 {
-  "image": "mcr.microsoft.com/devcontainers/universal",
-  "features": {
-    "ghcr.io/waruhachi/features/theos": {}
-  }
+	"image": "mcr.microsoft.com/devcontainers/universal",
+	"features": {
+		"ghcr.io/waruhachi/features/theos:latest": {}
+	}
 }
 ```
 
