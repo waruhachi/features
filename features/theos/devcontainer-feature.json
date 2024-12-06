@@ -1,8 +1,8 @@
 {
     "id": "theos",
     "version": "1.0.0",
-    "name": "theos",
-    "documentationURL": "http://github.com/waruhachi/theos-feature/",
+    "name": "Theos",
+    "documentationURL": "https://github.com/waruhachi/features/theos",
     "description": "A cross-platform build system for creating iOS, macOS, Linux, and Windows programs.",
     "options": {},
     "installsAfter": ["ghcr.io/devcontainers-extra/features/curl-apt-get"]
