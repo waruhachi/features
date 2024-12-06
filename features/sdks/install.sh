@@ -31,7 +31,6 @@ curl -L "$SDK_REPO_URL" -o "$SDK_TMP_DIR/repo.zip"
 echo "Extracting SDK repository..."
 unzip -q "$SDK_TMP_DIR/repo.zip" -d "$SDK_TMP_DIR"
 
-local sdk_paths
 sdk_paths=$(find "$SDK_TMP_DIR" -type d -name "*.sdk")
 
 if [[ -z "$sdk_paths" ]]; then
