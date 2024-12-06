@@ -1,0 +1,9 @@
+{
+    "id": "sdks",
+    "version": "1.0.0",
+    "name": "Theos Patched SDKs",
+    "documentationURL": "https://github.com/waruhachi/features/sdks",
+    "description": "Patched sdks that include private framework tbds.",
+    "options": {},
+    "installsAfter": []
+}
