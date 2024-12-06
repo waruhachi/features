@@ -1,0 +1,9 @@
+{
+    "id": "libgcuniversal",
+    "version": "1.7.0",
+    "name": "LibGcUniversal",
+    "documentationURL": "https://github.com/waruhachi/features/libgcuniversal",
+    "description": "A universal library for iOS Tweaks, mainly focused on providing improved preferences.",
+    "options": {},
+    "installsAfter": ["ghcr.io/devcontainers-extra/features/curl-apt-get"]
+}
