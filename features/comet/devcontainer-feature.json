@@ -1,9 +1,9 @@
 {
-    "id": "libgcuniversal",
-    "version": "1.7.0",
-    "name": "LibGcUniversal",
-    "documentationURL": "https://github.com/waruhachi/features/libgcuniversal",
-    "description": "A universal library for iOS Tweaks, mainly focused on providing improved preferences.",
+    "id": "comet",
+    "version": "1.0.5",
+    "name": "Comet",
+    "documentationURL": "https://github.com/waruhachi/features/comet",
+    "description": "A framework for writing SwiftUI preferences in jailbreak tweaks.",
     "options": {},
     "installsAfter": ["ghcr.io/devcontainers-extra/features/curl-apt-get"]
 }
