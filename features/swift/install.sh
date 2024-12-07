@@ -49,11 +49,11 @@ echo "Downloading Swift $SWIFT_VERSION for $SWIFT_PLATFORM_VERSION..."
 curl -L "https://download.swift.org/swift-$SWIFT_VERSION-release/$SWIFT_PLATFORM/swift-$SWIFT_VERSION-RELEASE/swift-$SWIFT_VERSION-RELEASE-$SWIFT_PLATFORM_VERSION.tar.gz" -o "$SWIFT_TMP_DIR/swift-$SWIFT_VERSION-$SWIFT_PLATFORM_VERSION.tar.gz"
 
 echo "Extracting Swift archive..."
-tar xzf "$SWIFT_TMP_DIR/swift-$SWIFT_VERSION-$SWIFT_PLATFORM_VERSION.tar.gz" -C "$HOME"
-mv "$HOME/swift-$SWIFT_VERSION-RELEASE-$SWIFT_PLATFORM_VERSION" "$HOME/Swift"
+tar xzf "$SWIFT_TMP_DIR/swift-$SWIFT_VERSION-$SWIFT_PLATFORM_VERSION.tar.gz" -C "/home/vscode"
+mv "/home/vscode/swift-$SWIFT_VERSION-RELEASE-$SWIFT_PLATFORM_VERSION" "/home/vscode/Swift"
 
 echo "Adding Swift to PATH..."
-echo "export PATH=\"$HOME/Swift/usr/bin:\$PATH\"" >> ~/.bashrc
+echo "export PATH=\"/home/vscode/Swift/usr/bin:\$PATH\"" >> ~/.bashrc
 source ~/.bashrc
 echo "Swift $SWIFT_VERSION has been installed successfully."
 
