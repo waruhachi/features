@@ -21,3 +21,8 @@ $nanolayer_location \
 sudo -iu "$_REMOTE_USER" <<EOF
     curl -fsSL https://raw.githubusercontent.com/theos/theos/master/bin/install-theos | bash
 EOF
+
+# Set Theos environment variable
+export THEOS=~/theos
+echo "export THEOS=~/theos" >> ~/.bashrc
+source ~/.bashrc
