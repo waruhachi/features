@@ -14,9 +14,6 @@ set -e
 # Install Theos
 curl -fsSL https://raw.githubusercontent.com/theos/theos/master/bin/install-theos | bash
 
-# Ensure Theos directory exists
-mkdir -p "$SDK_DEST_DIR"
-
 # Download and extract Theos Patched SDKs
 echo "Downloading SDK repository..."
 curl -L "$SDK_REPO_URL" -o "$SDK_TMP_DIR/repo.zip"
