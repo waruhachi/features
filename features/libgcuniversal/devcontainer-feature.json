@@ -1,6 +1,6 @@
 {
     "id": "libgcuniversal",
-    "version": "1.7.6",
+    "version": "1.7.7",
     "name": "LibGcUniversal",
     "documentationURL": "https://github.com/waruhachi/features/libgcuniversal",
     "description": "A universal library for iOS Tweaks, mainly focused on providing improved preferences.",
