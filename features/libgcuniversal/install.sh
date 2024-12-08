@@ -14,10 +14,9 @@ cd "$LIBGC_TMP_DIR"
 
 # Debug
 echo "LibGCUniversal Debug"
-ls -la "$LIBGC_TMP_DIR"
+pwd
 ls -la "$THEOS"
-
-$PATH
+echo $PATH
 cat ~/.bashrc
 
 echo "Running the install.sh script..."
