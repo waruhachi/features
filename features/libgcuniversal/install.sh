@@ -2,6 +2,9 @@
 
 set -e
 
+# Switch to non-root user
+sudo -iu "$_REMOTE_USER" <<EOF
+
 # Install LibGcUniversal
 LIBGC_REPO_URL="https://github.com/MrGcGamer/LibGcUniversalDocumentation"
 LIBGC_TMP_DIR=$(mktemp -d)
@@ -17,3 +20,5 @@ echo "Running the install.sh script..."
 
 echo "Cleaning up temporary files..."
 rm -rf "$LIBGC_TMP_DIR"
+
+EOF
