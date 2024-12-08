@@ -5,5 +5,5 @@
     "documentationURL": "https://github.com/waruhachi/features/swift",
     "description": "Swift is a general-purpose programming language that's approachable for newcomers and powerful for experts.",
     "options": {},
-    "installsAfter": ["ghcr.io/devcontainers-extra/features/curl-apt-get"]
+    "installsAfter": []
 }

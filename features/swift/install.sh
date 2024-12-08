@@ -2,20 +2,8 @@
 
 set -e
 
-source ./library_scripts.sh
-
-# nanolayer is a cli utility which keeps container layers as small as possible
-# source code: https://github.com/devcontainers-extra/nanolayer
-# `ensure_nanolayer` is a bash function that will find any existing nanolayer installations,
-# and if missing - will download a temporary copy that automatically get deleted at the end
-# of the script
-ensure_nanolayer nanolayer_location "v0.5.6"
-
-# Install Curl
-$nanolayer_location \
-    install \
-    devcontainer-feature \
-    "ghcr.io/devcontainers-extra/features/curl-apt-get:1"
+# Switch to non-root user
+sudo -iu "$_REMOTE_USER" <<EOF
 
 # Install Swift
 SWIFT_VERSION="6.0.2"
@@ -49,13 +37,15 @@ echo "Downloading Swift $SWIFT_VERSION for $SWIFT_PLATFORM_VERSION..."
 curl -L "https://download.swift.org/swift-$SWIFT_VERSION-release/$SWIFT_PLATFORM/swift-$SWIFT_VERSION-RELEASE/swift-$SWIFT_VERSION-RELEASE-$SWIFT_PLATFORM_VERSION.tar.gz" -o "$SWIFT_TMP_DIR/swift-$SWIFT_VERSION-$SWIFT_PLATFORM_VERSION.tar.gz"
 
 echo "Extracting Swift archive..."
-tar xzf "$SWIFT_TMP_DIR/swift-$SWIFT_VERSION-$SWIFT_PLATFORM_VERSION.tar.gz" -C "/home/vscode"
-mv "/home/vscode/swift-$SWIFT_VERSION-RELEASE-$SWIFT_PLATFORM_VERSION" "/home/vscode/Swift"
+tar xzf "$SWIFT_TMP_DIR/swift-$SWIFT_VERSION-$SWIFT_PLATFORM_VERSION.tar.gz" -C "~"
+mv "~/swift-$SWIFT_VERSION-RELEASE-$SWIFT_PLATFORM_VERSION" "~/Swift"
 
 echo "Adding Swift to PATH..."
-echo "export PATH=\"/home/vscode/Swift/usr/bin:\$PATH\"" >> ~/.bashrc
+echo "export PATH=\"~/Swift/usr/bin:\$PATH\"" >> ~/.bashrc
 source ~/.bashrc
 echo "Swift $SWIFT_VERSION has been installed successfully."
 
 echo "Cleaning up temporary files..."
 rm -rf "$SWIFT_TMP_DIR"
+
+EOF
