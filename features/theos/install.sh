@@ -7,6 +7,11 @@ sudo -iu "$_REMOTE_USER" <<EOF
     curl -fsSL https://raw.githubusercontent.com/theos/theos/master/bin/install-theos | bash
 EOF
 
+# Set Theos environment variable
+export THEOS=/home/vscode/theos
+echo "export THEOS=/home/vscode/theos" >> ~/.bashrc
+source ~/.bashrc
+
 # Install Theos Patched SDKs
 SDK_REPO_URL="https://github.com/theos/sdks/archive/master.zip"
 SDK_DEST_DIR="$THEOS/sdks"
@@ -34,11 +39,6 @@ for sdk_path in $sdk_paths; do
 done
 
 echo "All SDKs have been successfully copied to $SDK_DEST_DIR."
-
-# Set Theos environment variable
-export THEOS=~/theos
-echo "export THEOS=~/theos" >> ~/.bashrc
-source ~/.bashrc
 
 echo "Cleaning up temporary files..."
 rm -rf "$SDK_TMP_DIR"
