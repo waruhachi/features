@@ -7,9 +7,6 @@ SWIFT_PLATFORM="ubuntu2204"
 SWIFT_PLATFORM_VERSION="ubuntu22.04"
 SWIFT_TMP_DIR=$(mktemp -d)
 
-# Switch to non-root user
-sudo -iu "$_REMOTE_USER" <<EOF
-
 echo "Installing Swift dependencies..."
 
 sudo apt-get update
@@ -36,15 +33,13 @@ echo "Downloading Swift $SWIFT_VERSION for $SWIFT_PLATFORM_VERSION..."
 curl -L "https://download.swift.org/swift-$SWIFT_VERSION-release/$SWIFT_PLATFORM/swift-$SWIFT_VERSION-RELEASE/swift-$SWIFT_VERSION-RELEASE-$SWIFT_PLATFORM_VERSION.tar.gz" -o "$SWIFT_TMP_DIR/swift-$SWIFT_VERSION-$SWIFT_PLATFORM_VERSION.tar.gz"
 
 echo "Extracting Swift archive..."
-tar xzf "$SWIFT_TMP_DIR/swift-$SWIFT_VERSION-$SWIFT_PLATFORM_VERSION.tar.gz" -C "~"
-mv "~/swift-$SWIFT_VERSION-RELEASE-$SWIFT_PLATFORM_VERSION" "~/Swift"
+tar xzf "$SWIFT_TMP_DIR/swift-$SWIFT_VERSION-$SWIFT_PLATFORM_VERSION.tar.gz" -C "/home/vscode/"
+mv "/home/vscode/swift-$SWIFT_VERSION-RELEASE-$SWIFT_PLATFORM_VERSION" "/home/vscode/Swift"
 
 echo "Adding Swift to PATH..."
-echo "export PATH=\"~/Swift/usr/bin:\$PATH\"" >> ~/.bashrc
+echo "export PATH=\"/home/vscode/Swift/usr/bin:\$PATH\"" >> ~/.bashrc
 source ~/.bashrc
 echo "Swift $SWIFT_VERSION has been installed successfully."
-
-EOF
 
 echo "Cleaning up temporary files..."
 rm -rf "$SWIFT_TMP_DIR"

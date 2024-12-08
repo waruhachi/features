@@ -14,8 +14,18 @@ git clone "$LIBGC_REPO_URL" "$LIBGC_TMP_DIR"
 echo "Navigating to the LibGcUniversal repository directory..."
 cd "$LIBGC_TMP_DIR"
 
-echo "Running the install.sh script..."
-./install.sh
+echo "Copying the dynamic libraries..."
+rm -f "$THEOS/lib/libgcuniversal.dylib"
+mkdir -p "${THEOS}/lib/iphone/rootless"
+cp GcUniversal/libgcuniversal.tbd "${THEOS}/lib/"
+cp GcUniversal/libgcuniversalrootless.tbd "${THEOS}/lib/iphone/rootless/libgcuniversal.tbd"
+
+echo "Copying the header files..."
+mkdir -p "${THEOS}/include/GcUniversal"
+cp GcUniversal/*.h "${THEOS}/include/GcUniversal/"
+
+echo "Copying the module map..."
+cp GcUniversal/module.modulemap "${THEOS}/include/GcUniversal/"
 
 EOF
 
