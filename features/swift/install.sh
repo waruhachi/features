@@ -2,14 +2,13 @@
 
 set -e
 
-# Switch to non-root user
-sudo -iu "$_REMOTE_USER" <<EOF
-
-# Install Swift
 SWIFT_VERSION="6.0.2"
 SWIFT_PLATFORM="ubuntu2204"
 SWIFT_PLATFORM_VERSION="ubuntu22.04"
 SWIFT_TMP_DIR=$(mktemp -d)
+
+# Switch to non-root user
+sudo -iu "$_REMOTE_USER" <<EOF
 
 echo "Installing Swift dependencies..."
 
@@ -45,7 +44,7 @@ echo "export PATH=\"~/Swift/usr/bin:\$PATH\"" >> ~/.bashrc
 source ~/.bashrc
 echo "Swift $SWIFT_VERSION has been installed successfully."
 
+EOF
+
 echo "Cleaning up temporary files..."
 rm -rf "$SWIFT_TMP_DIR"
-
-EOF

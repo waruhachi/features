@@ -2,11 +2,10 @@
 
 set -e
 
+COMET_TMP_DIR=$(mktemp -d)
+
 # Switch to non-root user
 sudo -iu "$_REMOTE_USER" <<EOF
-
-# Install Comet
-COMET_TMP_DIR=$(mktemp -d)
 
 echo "Cloning the Comet repository..."
 git clone https://github.com/ginsudev/Comet "$COMET_TMP_DIR"
@@ -29,7 +28,7 @@ cd "$THEOS/vendor/templates/"
 
 echo "Comet installation completed successfully."
 
+EOF
+
 echo "Cleaning up temporary files..."
 rm -rf "$COMET_TMP_DIR"
-
-EOF

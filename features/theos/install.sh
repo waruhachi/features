@@ -3,7 +3,7 @@
 set -e
 
 SDK_REPO_URL="https://github.com/theos/sdks/archive/master.zip"
-SDK_DEST_DIR="$THEOS/sdks"
+SDK_DEST_DIR="/home/vscode/theos/sdks"
 SDK_TMP_DIR=$(mktemp -d)
 
 # Switch to non-root user
