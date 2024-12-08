@@ -14,8 +14,8 @@ cd "$LIBGC_TMP_DIR"
 
 # Debug
 echo "LibGCUniversal Debug"
-ls -la $LIBGC_TMP_DIR
-ls -la $THEOS
+ls -la "$LIBGC_TMP_DIR"
+ls -la "$THEOS"
 
 $PATH
 cat ~/.bashrc
