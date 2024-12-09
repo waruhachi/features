@@ -38,6 +38,11 @@ done
 
 echo "All SDKs have been successfully copied to $SDK_DEST_DIR."
 
+# Setting up THEOS environment variable for root
+echo "Adding THEOS environment variable..."
+echo "export THEOS=/home/vscode/theos" >> ~/.bashrc
+source ~/.bashrc
+
 # Cleanup
 echo "Cleaning up temporary files..."
 rm -rf "$SDK_TMP_DIR"
