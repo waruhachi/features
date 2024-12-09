@@ -1,6 +1,6 @@
 {
     "id": "remotelog",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "name": "RemoteLog",
     "documentationURL": "https://github.com/waruhachi/features/remotelog",
     "description": "Simple remote logging system using UDP datagrams.",

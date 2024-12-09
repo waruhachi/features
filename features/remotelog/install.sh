@@ -25,14 +25,13 @@ sed -i "s/replace with ip/$RL_IP_ADDRESS/" RemoteLog.h
 echo "Copying RemoteLog.h to $RL_DEST_DIR..."
 cp RemoteLog.h $RL_DEST_DIR
 
-echo $WORKSPACE_DIR
-# if [ -n "$WORKSPACE_DIR" ]; then
-#     echo "Moving RemoteLog server to workspace directory: $WORKSPACE_DIR"
-#     mv rlogserver.py "$WORKSPACE_DIR"
-# else
-#     echo "Error: No directories found in /workspaces."
-#     exit 1
-# fi
+if [ -n "$WORKSPACE_DIR" ]; then
+    echo "Moving RemoteLog server to workspace directory: $WORKSPACE_DIR"
+    mv rlogserver.py "$WORKSPACE_DIR"
+else
+    echo "Error: No directories found in /workspaces."
+    exit 1
+fi
 
 echo "Cleaning up temporary files..."
 rm -rf "$RL_TMP_DIR"
