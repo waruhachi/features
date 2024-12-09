@@ -14,13 +14,13 @@ curl -L "$DEB_URL" -o "$COMET_TMP_DIR/comet.deb"
 
 echo "Extracting Comet.framework from .deb file..."
 dpkg-deb -x "$COMET_TMP_DIR/comet.deb" "$COMET_TMP_DIR/comet_extracted"
-cp -r "$COMET_TMP_DIR/comet_extracted/Library/Frameworks/Comet.framework" "/home/vscode/lib/"
+cp -r "$COMET_TMP_DIR/comet_extracted/Library/Frameworks/Comet.framework" "/home/vscode/theos/lib/"
 
-echo "Copying comet-prefs folder to /home/vscode/vendor/templates/ios/..."
-cp -r comet-prefs/ "/home/vscode/vendor/templates/ios/"
+echo "Copying comet-prefs folder to /home/vscode/theos/vendor/templates/ios/..."
+cp -r comet-prefs/ "/home/vscode/theos/vendor/templates/ios/"
 
-echo "Running build.sh in /home/vscode/vendor/templates/..."
-cd "/home/vscode/vendor/templates/"
+echo "Running build.sh in /home/vscode/theos/vendor/templates/..."
+cd "/home/vscode/theos/vendor/templates/"
 ./build.sh
 
 echo "Comet installation completed successfully."
