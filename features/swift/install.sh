@@ -37,8 +37,8 @@ tar xzf "$SWIFT_TMP_DIR/swift-$SWIFT_VERSION-$SWIFT_PLATFORM_VERSION.tar.gz" -C 
 mv "/home/vscode/swift-$SWIFT_VERSION-RELEASE-$SWIFT_PLATFORM_VERSION" "/home/vscode/Swift"
 
 echo "Adding Swift to PATH..."
-echo "export PATH=\"/home/vscode/Swift/usr/bin:\$PATH\"" >> ~/.bashrc
-source ~/.bashrc
+echo "export PATH=\"/home/vscode/Swift/usr/bin:\$PATH\"" >> /home/vscode/.bashrc
+source /home/vscode/.bashrc
 echo "Swift $SWIFT_VERSION has been installed successfully."
 
 echo "Cleaning up temporary files..."

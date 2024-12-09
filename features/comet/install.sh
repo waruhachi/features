@@ -4,9 +4,6 @@ set -e
 
 COMET_TMP_DIR=$(mktemp -d)
 
-# Switch to non-root user
-sudo -iu "$_REMOTE_USER" <<EOF
-
 echo "Cloning the Comet repository..."
 git clone https://github.com/ginsudev/Comet "$COMET_TMP_DIR"
 cd "$COMET_TMP_DIR"
@@ -17,18 +14,16 @@ curl -L "$DEB_URL" -o "$COMET_TMP_DIR/comet.deb"
 
 echo "Extracting Comet.framework from .deb file..."
 dpkg-deb -x "$COMET_TMP_DIR/comet.deb" "$COMET_TMP_DIR/comet_extracted"
-cp -r "$COMET_TMP_DIR/comet_extracted/Library/Frameworks/Comet.framework" "$THEOS/lib/"
+cp -r "$COMET_TMP_DIR/comet_extracted/Library/Frameworks/Comet.framework" "/home/vscode/lib/"
 
-echo "Copying comet-prefs folder to $THEOS/vendor/templates/ios/..."
-cp -r comet-prefs/ "$THEOS/vendor/templates/ios/"
+echo "Copying comet-prefs folder to /home/vscode/vendor/templates/ios/..."
+cp -r comet-prefs/ "/home/vscode/vendor/templates/ios/"
 
-echo "Running build.sh in $THEOS/vendor/templates/..."
-cd "$THEOS/vendor/templates/"
+echo "Running build.sh in /home/vscode/vendor/templates/..."
+cd "/home/vscode/vendor/templates/"
 ./build.sh
 
 echo "Comet installation completed successfully."
-
-EOF
 
 echo "Cleaning up temporary files..."
 rm -rf "$COMET_TMP_DIR"
