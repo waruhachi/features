@@ -2,6 +2,7 @@
 
 set -e
 
+VSCODE_HOME=/home/vscode
 SWIFT_VERSION="6.0.2"
 SWIFT_PLATFORM="ubuntu2204"
 SWIFT_PLATFORM_VERSION="ubuntu22.04"
@@ -33,12 +34,12 @@ echo "Downloading Swift $SWIFT_VERSION for $SWIFT_PLATFORM_VERSION..."
 curl -L "https://download.swift.org/swift-$SWIFT_VERSION-release/$SWIFT_PLATFORM/swift-$SWIFT_VERSION-RELEASE/swift-$SWIFT_VERSION-RELEASE-$SWIFT_PLATFORM_VERSION.tar.gz" -o "$SWIFT_TMP_DIR/swift-$SWIFT_VERSION-$SWIFT_PLATFORM_VERSION.tar.gz"
 
 echo "Extracting Swift archive..."
-tar xzf "$SWIFT_TMP_DIR/swift-$SWIFT_VERSION-$SWIFT_PLATFORM_VERSION.tar.gz" -C "/home/vscode/"
-mv "/home/vscode/swift-$SWIFT_VERSION-RELEASE-$SWIFT_PLATFORM_VERSION" "/home/vscode/Swift"
+tar xzf "$SWIFT_TMP_DIR/swift-$SWIFT_VERSION-$SWIFT_PLATFORM_VERSION.tar.gz" -C "$VSCODE_HOME/"
+mv "$VSCODE_HOME/swift-$SWIFT_VERSION-RELEASE-$SWIFT_PLATFORM_VERSION" "$VSCODE_HOME/Swift"
 
 echo "Adding Swift to PATH..."
-echo "export PATH=\"/home/vscode/Swift/usr/bin:\$PATH\"" >> /home/vscode/.bashrc
-source /home/vscode/.bashrc
+echo "export PATH=\"$VSCODE_HOME/Swift/usr/bin:\$PATH\"" >> $VSCODE_HOME/.bashrc
+source $VSCODE_HOME/.bashrc
 echo "Swift $SWIFT_VERSION has been installed successfully."
 
 echo "Cleaning up temporary files..."

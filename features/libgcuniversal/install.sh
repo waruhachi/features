@@ -11,18 +11,8 @@ git clone "$LIBGC_REPO_URL" "$LIBGC_TMP_DIR"
 echo "Navigating to the LibGcUniversal repository directory..."
 cd "$LIBGC_TMP_DIR"
 
-echo "Copying the dynamic libraries..."
-rm -f "/home/vscode/lib/libgcuniversal.dylib"
-mkdir -p "/home/vscode/lib/iphone/rootless"
-cp GcUniversal/libgcuniversal.tbd "/home/vscode/lib/"
-cp GcUniversal/libgcuniversalrootless.tbd "/home/vscode/lib/iphone/rootless/libgcuniversal.tbd"
-
-echo "Copying the header files..."
-mkdir -p "/home/vscode/include/GcUniversal"
-cp GcUniversal/*.h "/home/vscode/include/GcUniversal/"
-
-echo "Copying the module map..."
-cp GcUniversal/module.modulemap "/home/vscode/include/GcUniversal/"
+echo "Running the install.sh script..."
+./install.sh
 
 echo "Installation successful!"
 

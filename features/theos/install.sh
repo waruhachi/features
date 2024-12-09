@@ -6,17 +6,13 @@ SDK_REPO_URL="https://github.com/theos/sdks/archive/master.zip"
 SDK_DEST_DIR="/home/vscode/theos/sdks"
 SDK_TMP_DIR=$(mktemp -d)
 
-# Switch to non-root user
 sudo -iu "$_REMOTE_USER" <<EOF
 
 set -e
-
-# Install Theos
 curl -fsSL https://raw.githubusercontent.com/theos/theos/master/bin/install-theos | bash
 
 EOF
 
-# Download and extract Theos Patched SDKs
 echo "Downloading SDK repository..."
 curl -L "$SDK_REPO_URL" -o "$SDK_TMP_DIR/repo.zip"
 
@@ -38,11 +34,9 @@ done
 
 echo "All SDKs have been successfully copied to $SDK_DEST_DIR."
 
-# Setting up THEOS environment variable for root
 echo "Adding THEOS environment variable..."
 echo "export THEOS=/home/vscode/theos" >> ~/.bashrc
 source ~/.bashrc
 
-# Cleanup
 echo "Cleaning up temporary files..."
 rm -rf "$SDK_TMP_DIR"

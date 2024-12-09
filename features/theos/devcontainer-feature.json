@@ -1,6 +1,6 @@
 {
     "id": "theos",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "name": "Theos",
     "documentationURL": "https://github.com/waruhachi/features/theos",
     "description": "A cross-platform build system for creating iOS, macOS, Linux, and Windows programs.",
