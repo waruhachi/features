@@ -1,10 +1,9 @@
 {
     "id": "remotelog",
-    "version": "0.0.5",
+    "version": "0.0.6",
     "name": "RemoteLog",
     "documentationURL": "https://github.com/waruhachi/features/remotelog",
     "description": "Simple remote logging system using UDP datagrams.",
     "options": {},
-    "installsAfter": [ "ghcr.io/devcontainers/features/python" ],
-    "postAttachCommand": "python3 /home/vscode/rlogserver.py"
+    "installsAfter": [ "ghcr.io/devcontainers/features/python" ]
 }
