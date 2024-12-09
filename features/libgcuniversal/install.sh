@@ -19,7 +19,7 @@ cd "$LIBGC_TMP_DIR"
 echo "Running the install.sh script..."
 ./install.sh
 
-echo "Installation successful!"
-
 echo "Cleaning up temporary files..."
-rm -rf "$LIBGC_TMP_DIR"[fix]
+rm -rf "$LIBGC_TMP_DIR"
+
+echo "Installation successful!"
