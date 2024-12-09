@@ -12,6 +12,12 @@ echo "Navigating to the LibGcUniversal repository directory..."
 cd "$LIBGC_TMP_DIR"
 
 echo "Running the install.sh script..."
+cat ~/.bashrc
+
+echo "Adding THEOS environment variable..."
+echo "export THEOS=/home/vscode/theos" >> ~/.bashrc
+source ~/.bashrc
+
 ./install.sh
 
 echo "Installation successful!"
