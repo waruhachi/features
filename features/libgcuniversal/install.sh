@@ -15,6 +15,7 @@ echo "Running the install.sh script..."
 cat ~/.bashrc
 
 echo "Adding THEOS environment variable..."
+export THEOS=/home/vscode/theos
 echo "export THEOS=/home/vscode/theos" >> ~/.bashrc
 source ~/.bashrc
 
