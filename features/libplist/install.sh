@@ -16,9 +16,7 @@ sudo apt-get install -y \
   git \
   autoconf \
   automake \
-  libtool-bin \
-  doxygen \
-  cython3
+  libtool-bin 
 
 echo "Cloning the libplist repository into the temporary directory..."
 git clone "$LIBPLIST_REPO_URL" "$LIBPLIST_TMP_DIR"
@@ -26,7 +24,7 @@ git clone "$LIBPLIST_REPO_URL" "$LIBPLIST_TMP_DIR"
 cd "$LIBPLIST_TMP_DIR"
 
 echo "Configuring the source tree..."
-./autogen.sh
+./autogen.sh --without-cython
 
 echo "Building the project..."
 make
