@@ -7,7 +7,6 @@
 # Docs: https://github.com/devcontainers/features/tree/main/src/node
 # Maintainer: The Dev Container spec maintainers
 
-export SHELL=/bin/bash
 export NODE_VERSION="${VERSION:-"lts"}"
 export PNPM_VERSION="${PNPMVERSION:-"latest"}"
 export NVM_VERSION="${NVMVERSION:-"latest"}"
@@ -385,6 +384,7 @@ if [ ! -z "${PNPM_VERSION}" ] && [ "${PNPM_VERSION}" = "none" ]; then
 else
     if bash -c ". '${NVM_DIR}/nvm.sh' && type npm >/dev/null 2>&1"; then
         (
+            export SHELL=/bin/bash
             . "${NVM_DIR}/nvm.sh"
             [ ! -z "$http_proxy" ] && npm set proxy="$http_proxy"
             [ ! -z "$https_proxy" ] && npm set https-proxy="$https_proxy"
