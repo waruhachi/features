@@ -384,14 +384,11 @@ if [ ! -z "${PNPM_VERSION}" ] && [ "${PNPM_VERSION}" = "none" ]; then
 else
     if bash -c ". '${NVM_DIR}/nvm.sh' && type npm >/dev/null 2>&1"; then
         (
-            export SHELL=/bin/bash
             . "${NVM_DIR}/nvm.sh"
             [ ! -z "$http_proxy" ] && npm set proxy="$http_proxy"
             [ ! -z "$https_proxy" ] && npm set https-proxy="$https_proxy"
             [ ! -z "$no_proxy" ] && npm set noproxy="$no_proxy"
             npm install -g pnpm@$PNPM_VERSION --force
-            pnpm setup
-            source /home/vscode/.bashrc
         )
     else
         echo "Skip installing pnpm because npm is missing"
