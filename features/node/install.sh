@@ -7,11 +7,12 @@
 # Docs: https://github.com/devcontainers/features/tree/main/src/node
 # Maintainer: The Dev Container spec maintainers
 
+export SHELL=/bin/bash
 export NODE_VERSION="${VERSION:-"lts"}"
 export PNPM_VERSION="${PNPMVERSION:-"latest"}"
 export NVM_VERSION="${NVMVERSION:-"latest"}"
 export NVM_DIR="${NVMINSTALLPATH:-"/usr/local/share/nvm"}"
-INSTALL_TOOLS_FOR_NODE_GYP="${NODEGYPDEPENDENCIES:-true}"
+export INSTALL_TOOLS_FOR_NODE_GYP="${NODEGYPDEPENDENCIES:-true}"
 export INSTALL_YARN_USING_APT="${INSTALLYARNUSINGAPT:-true}"  # only concerns Debian-based systems
 
 # Comma-separated list of node versions to be installed (with nvm)
