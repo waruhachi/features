@@ -4,10 +4,6 @@ set -e
 
 VSCODE_HOME=/home/vscode
 
-echo "Installing dependencies..."
-
-sudo apt-get -y install libpython3-dev libxml2-dev libz3-dev pkg-config python3-lldb-13
-
 echo "Installing Swift using swiftly..."
 
 curl -O https://download.swift.org/swiftly/linux/swiftly-$(uname -m).tar.gz
