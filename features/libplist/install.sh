@@ -7,16 +7,16 @@ LIBPLIST_REPO_URL="https://github.com/libimobiledevice/libplist.git"
 LIBPLIST_TMP_DIR=$(mktemp -d)
 
 echo "Updating package lists..."
-sudo apt-get update -y
+sudo apt update -y
 
 echo "Installing required dependencies..."
-sudo apt-get install -y \
+sudo apt install -y \
   build-essential \
   checkinstall \
   git \
   autoconf \
   automake \
-  libtool-bin 
+  libtool-bin
 
 echo "Cloning the libplist repository into the temporary directory..."
 git clone "$LIBPLIST_REPO_URL" "$LIBPLIST_TMP_DIR"
