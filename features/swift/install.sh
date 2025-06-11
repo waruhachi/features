@@ -12,12 +12,17 @@ curl -O https://download.swift.org/swiftly/linux/swiftly-$(uname -m).tar.gz
 tar zxf swiftly-$(uname -m).tar.gz
 ./swiftly init --quiet-shell-followup --assume-yes
 
-echo "Setting up Swift environment..."
-. "${SWIFTLY_HOME_DIR:-~/.local/share/swiftly}/env.sh"
-hash -r
+echo "Installing Dependecies..."
 
-echo "Adding Swift to PATH..."
-echo '. "${SWIFTLY_HOME_DIR:-~/.local/share/swiftly}/env.sh"' >> $VSCODE_HOME/.bashrc
+apt-get -y install libpython3-dev libxml2-dev libncurses-dev libz3-dev pkg-config
+
+echo "Updating PATH..."
+
+export SWIFTLY_HOME_DIR="$VSCODE_HOME/.local/share/swiftly"
+export SWIFTLY_BIN_DIR="$VSCODE_HOME/.local/share/swiftly/bin"
+if [[ ":$PATH:" != *":$SWIFTLY_BIN_DIR:"* ]]; then
+    export PATH="$SWIFTLY_BIN_DIR:$PATH"
+fi
 
 echo "Cleaning up..."
 rm -f swiftly-$(uname -m).tar.gz
