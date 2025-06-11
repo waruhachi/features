@@ -13,8 +13,8 @@ tar zxf swiftly-$(uname -m).tar.gz
 ./swiftly init --quiet-shell-followup --assume-yes
 
 echo "Installing Dependecies..."
-
-apt-get -y install libpython3-dev libxml2-dev libncurses-dev libz3-dev pkg-config
+sudo apt update
+sudo apt -y install libpython3-dev libxml2-dev libncurses-dev libz3-dev pkg-config
 
 echo "Updating PATH..."
 
