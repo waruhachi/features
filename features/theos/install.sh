@@ -2,14 +2,14 @@
 
 set -e
 
-SDK_REPO_URL="https://github.com/theos/sdks/archive/master.zip"
+SDK_REPO_URL="https://github.com/waruhachi/sdks/archive/master.zip"
 SDK_DEST_DIR="/home/vscode/theos/sdks"
 SDK_TMP_DIR=$(mktemp -d)
 
 sudo -iu "$_REMOTE_USER" <<EOF
 
 set -e
-curl -fsSL https://raw.githubusercontent.com/theos/theos/master/bin/install-theos | bash
+curl -fsSL https://raw.githubusercontent.com/waruhachi/theos/master/bin/install-theos | bash
 
 EOF
 
