@@ -2,7 +2,7 @@
 
 set -e
 
-LIBGC_REPO_URL="https://github.com/MrGcGamer/LibGcUniversalDocumentation"
+LIBGC_REPO_URL="https://github.com/waruhachi/LibGcUniversal"
 LIBGC_TMP_DIR=$(mktemp -d)
 
 echo "Adding THEOS environment variable..."
