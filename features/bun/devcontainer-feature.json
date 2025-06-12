@@ -1,6 +1,6 @@
 {
     "id": "bun",
-    "version": "0.0.2",
+    "version": "1.0.0",
     "name": "Bun",
     "documentationURL": "https://github.com/waruhachi/features/bun",
     "description": "A new JavaScript runtime built from scratch to serve the modern JavaScript ecosystem.",

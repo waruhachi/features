@@ -1,6 +1,6 @@
 {
     "id": "comet",
-    "version": "1.0.10",
+    "version": "1.0.0",
     "name": "Comet",
     "documentationURL": "https://github.com/waruhachi/features/comet",
     "description": "A framework for writing SwiftUI preferences in jailbreak tweaks.",
