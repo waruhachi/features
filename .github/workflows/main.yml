@@ -1,9 +1,9 @@
 name: "Release"
 on:
+  workflow_dispatch:
   push:
     branches:
-    - main
-  workflow_dispatch:
+      - main
 
 jobs:
   deploy:
@@ -11,10 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-      pull-requests: write
       packages: write
+      pull-requests: write
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: "Publish Features"
         uses: devcontainers/action@v1
