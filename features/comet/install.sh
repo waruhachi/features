@@ -2,16 +2,16 @@
 
 set -e
 
-VSCODE_HOME=/home/vscode
+COMET_REPO_URL="https://github.com/ginsudev/Comet"
 COMET_TMP_DIR=$(mktemp -d)
 
 echo "Adding THEOS environment variable..."
-export THEOS=/home/vscode/theos
-echo "export THEOS=/home/vscode/theos" >> ~/.bashrc
+export THEOS="/home/vscode/theos"
+echo "export THEOS="/home/vscode/theos" >> ~/.bashrc
 source ~/.bashrc
 
 echo "Cloning the Comet repository..."
-git clone https://github.com/ginsudev/Comet "$COMET_TMP_DIR"
+git clone "$COMET_REPO_URL" "$COMET_TMP_DIR"
 cd "$COMET_TMP_DIR"
 
 echo "Downloading Comet from Chariz repo..."
@@ -20,16 +20,16 @@ curl -L "$DEB_URL" -o "$COMET_TMP_DIR/comet.deb"
 
 echo "Extracting Comet.framework from .deb file..."
 dpkg-deb -x "$COMET_TMP_DIR/comet.deb" "$COMET_TMP_DIR/comet_extracted"
-cp -r "$COMET_TMP_DIR/comet_extracted/Library/Frameworks/Comet.framework" "$VSCODE_HOME/theos/lib/"
+cp -r "$COMET_TMP_DIR/comet_extracted/Library/Frameworks/Comet.framework" "$THEOS/lib/"
 
-echo "Copying comet-prefs folder to $VSCODE_HOME/theos/vendor/templates/ios/..."
-cp -r comet-prefs/ "$VSCODE_HOME/theos/vendor/templates/ios/"
+echo "Copying comet-prefs folder to $THEOS/vendor/templates/ios/..."
+cp -r comet-prefs/ "$THEOS/vendor/templates/ios/"
 
-echo "Running build.sh in $VSCODE_HOME/theos/vendor/templates/..."
-cd "$VSCODE_HOME/theos/vendor/templates/"
+echo "Running build.sh in $THEOS/vendor/templates/..."
+cd "$THEOS/vendor/templates/"
 ./build.sh
-
-echo "Comet installation completed successfully."
 
 echo "Cleaning up temporary files..."
 rm -rf "$COMET_TMP_DIR"
+
+echo "Comet installation completed successfully"
