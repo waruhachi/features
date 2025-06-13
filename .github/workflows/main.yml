@@ -6,13 +6,43 @@ on:
       - main
 
 jobs:
-  deploy:
+  generateMatrix:
+    runs-on: ubuntu-latest
+    outputs:
+      featuresJSON: ${{ steps.setMatrix.outputs.featuresJSON }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: setMatrix
+        run: |
+          cd ./features
+          featureList=$(ls -d */ | sed 's|/||' | jq -R . | jq -s .)
+          echo "featuresJSON=${featureList}" >> $GITHUB_OUTPUT
+          cd ..
+
+  deletePackages:
+    needs: generateMatrix
+    if: ${{ github.ref == 'refs/heads/main' }}
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+    strategy:
+      matrix:
+        feature: ${{ fromJSON(needs.generateMatrix.outputs.featuresJSON) }}
+    steps:
+      - name: Delete latest version for ${{ matrix.feature }}
+        uses: actions/delete-package-versions@v5
+        with:
+          package-name: ${{ matrix.feature }}
+          package-type: "container"
+          min-versions-to-keep: 0
+
+  publishFeatures:
+    needs: deletePackages
     if: ${{ github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-latest
     permissions:
       contents: write
       packages: write
-      pull-requests: write
     steps:
       - uses: actions/checkout@v4
 
