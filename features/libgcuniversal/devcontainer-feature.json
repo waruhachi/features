@@ -5,6 +5,6 @@
     "documentationURL": "https://github.com/waruhachi/features/libgcuniversal",
     "description": "A universal library for iOS Tweaks, mainly focused on providing improved preferences.",
     "dependsOn": {
-        "theos:latest": {}
+        "ghcr.io/waruhachi/features/theos:latest": {}
     }
 }

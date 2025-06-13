@@ -5,6 +5,6 @@
     "documentationURL": "https://github.com/waruhachi/features/comet",
     "description": "A framework for writing SwiftUI preferences in jailbreak tweaks.",
     "dependsOn": {
-        "theos:latest": {}
+        "ghcr.io/waruhachi/features/theos:latest": {}
     }
 }

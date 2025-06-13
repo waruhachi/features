@@ -5,6 +5,6 @@
     "documentationURL": "https://github.com/waruhachi/features/remotelog",
     "description": "Simple remote logging system using UDP datagrams",
     "dependsOn": {
-        "theos:latest": {}
+        "ghcr.io/waruhachi/features/theos:latest": {}
     }
 }
