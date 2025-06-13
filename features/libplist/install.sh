@@ -2,8 +2,7 @@
 
 set -e
 
-
-LIBPLIST_REPO_URL="https://github.com/libimobiledevice/libplist.git"
+LIBPLIST_REPO_URL="https://github.com/libimobiledevice/libplist"
 LIBPLIST_TMP_DIR=$(mktemp -d)
 
 echo "Updating package lists..."
@@ -21,6 +20,7 @@ sudo apt install -y \
 echo "Cloning the libplist repository into the temporary directory..."
 git clone "$LIBPLIST_REPO_URL" "$LIBPLIST_TMP_DIR"
 
+echo "Navigating to the libplist repository directory..."
 cd "$LIBPLIST_TMP_DIR"
 
 echo "Configuring the source tree..."
@@ -38,4 +38,4 @@ sudo ldconfig
 echo "Cleaning up temporary files..."
 rm -rf "$LIBPLIST_TMP_DIR"
 
-echo "libplist installation completed successfully!"
+echo "libplist installation completed successfully"
