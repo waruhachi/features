@@ -6,7 +6,7 @@ LIBGC_REPO_URL="https://github.com/waruhachi/LibGcUniversal"
 LIBGC_TMP_DIR=$(mktemp -d)
 
 echo "Adding THEOS environment variable..."
-export THEOS=/home/vscode/theos
+export THEOS="/home/vscode/theos"
 echo "export THEOS=/home/vscode/theos" >> ~/.bashrc
 source ~/.bashrc
 

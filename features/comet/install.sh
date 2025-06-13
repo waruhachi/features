@@ -7,7 +7,7 @@ COMET_TMP_DIR=$(mktemp -d)
 
 echo "Adding THEOS environment variable..."
 export THEOS="/home/vscode/theos"
-echo "export THEOS="/home/vscode/theos" >> ~/.bashrc
+echo "export THEOS=/home/vscode/theos" >> ~/.bashrc
 source ~/.bashrc
 
 echo "Cloning the Comet repository..."
