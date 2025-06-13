@@ -3,7 +3,5 @@
     "version": "1.0.0",
     "name": "libplist",
     "documentationURL": "https://github.com/waruhachi/features/libplist",
-    "description": "A library to handle Apple Property List format in binary or XML.",
-    "options": {},
-    "installsAfter": []
+    "description": "A library to handle Apple Property List format in binary or XML."
 }
