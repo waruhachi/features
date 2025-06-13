@@ -37,8 +37,7 @@ jobs:
           PACKAGE_ID=$(gh api \
             -H "Accept: application/vnd.github+json" \
             /users/${OWNER}/packages/${PACKAGE_TYPE}/${PACKAGE_NAME} \
-            --jq '.id' \
-            -q)
+            --jq '.id')
           if [ -n "$PACKAGE_ID" ]; then
             gh api \
               --method DELETE \
