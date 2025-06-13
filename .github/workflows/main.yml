@@ -31,7 +31,7 @@ jobs:
       - name: Delete package for ${{ matrix.feature }}
         run: |
           PACKAGE_TYPE="container"
-          PACKAGE_NAME="${{ matrix.feature }}"
+          PACKAGE_NAME="features%2F${{ matrix.feature }}"
           USERNAME="${{ github.repository_owner }}"
 
           gh api \
