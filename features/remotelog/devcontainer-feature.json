@@ -1,0 +1,10 @@
+{
+    "id": "remotelog",
+    "version": "1.0.0",
+    "name": "RemoteLog",
+    "documentationURL": "https://github.com/waruhachi/features/remotelog",
+    "description": "Simple remote logging system using UDP datagrams",
+    "dependsOn": {
+        "theos:latest": {}
+    }
+}
