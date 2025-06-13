@@ -34,15 +34,18 @@ jobs:
           OWNER="${{ github.repository_owner }}"
           PACKAGE_TYPE="container"
           GH_TOKEN="${{ secrets.GITHUB_TOKEN }}"
-          PACKAGE_ID=$(gh api \
-            -H "Accept: application/vnd.github+json" \
-            /users/${OWNER}/packages/${PACKAGE_TYPE}/${PACKAGE_NAME} \
-            --jq '.id')
+
+          # Try org endpoint first
+          PACKAGE_ID=$(gh api -H "Accept: application/vnd.github+json" /orgs/${OWNER}/packages/${PACKAGE_TYPE}/${PACKAGE_NAME} --jq '.id' 2>/dev/null || true)
+          ENDPOINT_TYPE="orgs"
+          if [ -z "$PACKAGE_ID" ]; then
+            # Try user endpoint if org not found
+            PACKAGE_ID=$(gh api -H "Accept: application/vnd.github+json" /users/${OWNER}/packages/${PACKAGE_TYPE}/${PACKAGE_NAME} --jq '.id' 2>/dev/null || true)
+            ENDPOINT_TYPE="users"
+          fi
+
           if [ -n "$PACKAGE_ID" ]; then
-            gh api \
-              --method DELETE \
-              -H "Accept: application/vnd.github+json" \
-              /users/${OWNER}/packages/${PACKAGE_TYPE}/${PACKAGE_NAME}
+            gh api --method DELETE -H "Accept: application/vnd.github+json" /${ENDPOINT_TYPE}/${OWNER}/packages/${PACKAGE_TYPE}/${PACKAGE_NAME}
             echo "Deleted package $PACKAGE_NAME"
           else
             echo "Package $PACKAGE_NAME not found, skipping."
