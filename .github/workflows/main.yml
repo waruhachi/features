@@ -37,9 +37,9 @@ jobs:
             --method DELETE \
             -H "Accept: application/vnd.github+json" \
             -H "X-GitHub-Api-Version: 2022-11-28" \
-            /users/${USERNAME}/packages/${PACKAGE_TYPE}/${PACKAGE_NAME} || echo "Package $PACKAGE_NAME not found or already deleted, skipping."
+            /users/${USERNAME}/packages/${PACKAGE_TYPE}/${PACKAGE_NAME}
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
   publishFeatures:
     needs: deletePackages
