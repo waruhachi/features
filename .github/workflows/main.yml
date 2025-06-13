@@ -14,7 +14,7 @@ jobs:
       - uses: actions/checkout@v4
       - id: setMatrix
         run: |
-          featureList=$(ls -d ./features/*/ | xargs -n1 basename | jq -R . | jq -s .)
+          featureList=$(ls -d ./features/*/ | xargs -n1 basename | jq -R . | jq -c -s .)
           echo "featuresJSON=${featureList}" >> $GITHUB_OUTPUT
           cd ..
 
