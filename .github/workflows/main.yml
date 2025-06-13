@@ -30,13 +30,14 @@ jobs:
     steps:
       - name: Delete package for ${{ matrix.feature }}
         run: |
-          PACKAGE_NAME="features/${{ matrix.feature }}"
           PACKAGE_TYPE="container"
+          USERNAME="${{ github.repository_owner }}"
+          PACKAGE_NAME="features/${{ matrix.feature }}"
           gh api \
             --method DELETE \
             -H "Accept: application/vnd.github+json" \
             -H "X-GitHub-Api-Version: 2022-11-28" \
-            /user/packages/${PACKAGE_TYPE}/${PACKAGE_NAME} || echo "Package $PACKAGE_NAME not found or already deleted, skipping."
+            /users/${USERNAME}/packages/${PACKAGE_TYPE}/${PACKAGE_NAME} || echo "Package $PACKAGE_NAME not found or already deleted, skipping."
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
