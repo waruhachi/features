@@ -1,0 +1,10 @@
+{
+    "id": "powercuts",
+    "version": "1.0.0",
+    "name": "Powercuts",
+    "documentationURL": "https://github.com/waruhachi/features/powercuts",
+    "description": "A library to supercharge Shortcuts! Allows tweaks to provide actions to Shortcuts.",
+    "dependsOn": {
+        "ghcr.io/waruhachi/features/theos:latest": {}
+    }
+}
