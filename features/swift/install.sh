@@ -6,15 +6,15 @@ set -e
 
 VSCODE_HOME=/home/vscode
 
+echo "Installing Dependecies..."
+sudo apt update
+sudo apt -y install libpython3-dev libxml2-dev libncurses-dev libz3-dev pkg-config
+
 echo "Installing Swift using swiftly..."
 
 curl -O https://download.swift.org/swiftly/linux/swiftly-$(uname -m).tar.gz
 tar zxf swiftly-$(uname -m).tar.gz
 ./swiftly init --quiet-shell-followup --assume-yes
-
-echo "Installing Dependecies..."
-sudo apt update
-sudo apt -y install libpython3-dev libxml2-dev libncurses-dev libz3-dev pkg-config
 
 echo "Updating PATH..."
 
