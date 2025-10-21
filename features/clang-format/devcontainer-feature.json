@@ -1,0 +1,7 @@
+{
+    "id": "clang-format",
+    "version": "1.0.0",
+    "name": "ClangFormat",
+    "documentationURL": "https://github.com/waruhachi/features/clang-format",
+    "description": "ClangFormat is a set of tools built on LibFormat, including a standalone tool to format C/C++/Java/JavaScript/JSON/Objective-C/Protobuf/C# code."
+}
