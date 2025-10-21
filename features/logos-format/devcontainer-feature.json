@@ -1,0 +1,11 @@
+{
+    "id": "logos-format",
+    "version": "1.0.0",
+    "name": "LogosFormat",
+    "documentationURL": "https://github.com/waruhachi/features/logos-format",
+    "description": "A project that allows for Logos files to be formatted with the help of clang-format.",
+	"dependsOn": {
+		"ghcr.io/waruhachi/features/python:latest": {},
+		"ghcr.io/waruhachi/features/clang-format:latest": {}
+    }
+}
