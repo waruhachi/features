@@ -6,12 +6,11 @@ SDK_REPO_URL="https://github.com/waruhachi/sdks/archive/master.zip"
 SDK_DEST_DIR="/home/vscode/theos/sdks"
 SDK_TMP_DIR=$(mktemp -d)
 
-sudo -iu "$_REMOTE_USER" <<EOF
+echo "Installing dependencies..."
+apt-get update
+apt-get install -y curl unzip
 
-set -e
 curl -fsSL https://raw.githubusercontent.com/waruhachi/theos/master/bin/install-theos | bash
-
-EOF
 
 echo "Downloading SDK repository..."
 curl -L "$SDK_REPO_URL" -o "$SDK_TMP_DIR/repo.zip"
