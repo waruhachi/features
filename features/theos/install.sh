@@ -10,7 +10,10 @@ echo "Installing dependencies..."
 apt-get update
 apt-get install -y curl unzip
 
+echo "Installing Theos..."
+sudo -u vscode bash << 'EOF'
 curl -fsSL https://raw.githubusercontent.com/waruhachi/theos/master/bin/install-theos | bash
+EOF
 
 echo "Downloading SDK repository..."
 curl -L "$SDK_REPO_URL" -o "$SDK_TMP_DIR/repo.zip"
@@ -34,8 +37,9 @@ done
 echo "All SDKs have been successfully copied to $SDK_DEST_DIR."
 
 echo "Adding THEOS environment variable..."
-echo "export THEOS=/home/vscode/theos" >> ~/.bashrc
-source ~/.bashrc
+echo "export THEOS=/home/vscode/theos" >> /home/vscode/.bashrc
 
 echo "Cleaning up temporary files..."
 rm -rf "$SDK_TMP_DIR"
+
+echo "Installation completed successfully!"
