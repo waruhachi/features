@@ -9,8 +9,6 @@ SDK_TMP_DIR=$(mktemp -d)
 set -e
 curl -fsSL https://raw.githubusercontent.com/waruhachi/theos/master/bin/install-theos | bash
 
-EOF
-
 echo "Downloading SDK repository..."
 curl -L "$SDK_REPO_URL" -o "$SDK_TMP_DIR/repo.zip"
 
