@@ -11,9 +11,7 @@ apt-get update
 apt-get install -y curl unzip
 
 echo "Installing Theos..."
-sudo -u vscode bash << 'EOF'
-curl -fsSL https://raw.githubusercontent.com/waruhachi/theos/master/bin/install-theos | bash
-EOF
+su - vscode -c "curl -fsSL https://raw.githubusercontent.com/waruhachi/theos/master/bin/install-theos | bash"
 
 echo "Downloading SDK repository..."
 curl -L "$SDK_REPO_URL" -o "$SDK_TMP_DIR/repo.zip"
