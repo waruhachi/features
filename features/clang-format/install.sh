@@ -3,9 +3,9 @@
 set -e
 
 echo "Updating package lists..."
-apt update -y
+apt-get update -y
 
 echo "Installing ClangFormat..."
-apt install clang-format -y
+apt-get install clang-format -y
 
 echo "ClangFormat installation completed successfully"

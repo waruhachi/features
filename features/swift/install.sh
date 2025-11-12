@@ -6,8 +6,8 @@ set -e
 VSCODE_HOME=/home/vscode
 
 echo "Installing Dependecies..."
-apt update
-apt -y install libpython3-dev libxml2-dev libncurses-dev libz3-dev pkg-config aria2
+apt-get update
+apt-get -y install libpython3-dev libxml2-dev libncurses-dev libz3-dev pkg-config aria2
 
 echo "Installing Swift using swiftly..."
 

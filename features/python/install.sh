@@ -3,15 +3,15 @@
 set -e
 
 echo "Updating package lists..."
-apt update -y
+apt-get update -y
 
 echo "Installing Python..."
-apt install python3 -y
+apt-get install python3 -y
 
 echo "Installing pip..."
-apt install python3-pip -y
+apt-get install python3-pip -y
 
 echo "Installing virtualenv..."
-apt install python3-venv -y
+apt-get install python3-venv -y
 
 echo "Python installation completed successfully"

@@ -6,10 +6,10 @@ LIBPLIST_REPO_URL="https://github.com/libimobiledevice/libplist"
 LIBPLIST_TMP_DIR=$(mktemp -d)
 
 echo "Updating package lists..."
-apt update -y
+apt-get update -y
 
 echo "Installing required dependencies..."
-apt install -y \
+apt-get install -y \
   build-essential \
   checkinstall \
   git \
