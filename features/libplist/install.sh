@@ -5,13 +5,11 @@ set -e
 LIBPLIST_REPO_URL="https://github.com/libimobiledevice/libplist"
 LIBPLIST_TMP_DIR=$(mktemp -d)
 
-sudo -iu "$_REMOTE_USER" <<EOF
-
 echo "Updating package lists..."
-sudo apt update -y
+apt update -y
 
 echo "Installing required dependencies..."
-sudo apt install -y \
+apt install -y \
   build-essential \
   checkinstall \
   git \
@@ -32,10 +30,10 @@ echo "Building the project..."
 make
 
 echo "Installing the library..."
-sudo make install
+make install
 
 echo "Updating library cache..."
-sudo ldconfig
+ldconfig
 
 echo "Cleaning up temporary files..."
 rm -rf "$LIBPLIST_TMP_DIR"

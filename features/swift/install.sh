@@ -3,13 +3,11 @@
 
 set -e
 
-sudo -iu "$_REMOTE_USER" <<EOF
-
 VSCODE_HOME=/home/vscode
 
 echo "Installing Dependecies..."
-sudo apt update
-sudo apt -y install libpython3-dev libxml2-dev libncurses-dev libz3-dev pkg-config aria2
+apt update
+apt -y install libpython3-dev libxml2-dev libncurses-dev libz3-dev pkg-config aria2
 
 echo "Installing Swift using swiftly..."
 
