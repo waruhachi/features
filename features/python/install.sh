@@ -2,6 +2,8 @@
 
 set -e
 
+sudo -iu "$_REMOTE_USER" <<EOF
+
 echo "Updating package lists..."
 sudo apt update -y
 

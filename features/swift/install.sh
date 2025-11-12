@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 
-sudo -iu "$_REMOTE_USER" <<EOF
 
 set -e
+
+sudo -iu "$_REMOTE_USER" <<EOF
 
 VSCODE_HOME=/home/vscode
 

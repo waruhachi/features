@@ -5,6 +5,8 @@ set -e
 LIBPLIST_REPO_URL="https://github.com/libimobiledevice/libplist"
 LIBPLIST_TMP_DIR=$(mktemp -d)
 
+sudo -iu "$_REMOTE_USER" <<EOF
+
 echo "Updating package lists..."
 sudo apt update -y
 

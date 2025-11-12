@@ -2,10 +2,12 @@
 
 set -e
 
+sudo -iu "$_REMOTE_USER" <<EOF
+
 echo "Updating package lists..."
-apt update -y
+sudo apt update -y
 
 echo "Installing ClangFormat..."
-apt install clang-format -y
+sudo apt install clang-format -y
 
 echo "ClangFormat installation completed successfully"
