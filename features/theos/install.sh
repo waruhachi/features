@@ -2,9 +2,9 @@
 
 set -e
 
-THEOS_DEST_DIR="/home/vscode/theos"
+THEOS_DIR="/home/vscode/theos"
 SDK_REPO_URL="https://github.com/waruhachi/sdks/archive/master.zip"
-SDK_DEST_DIR="$THEOS_DEST_DIR/sdks"
+SDK_DEST_DIR="$THEOS_DIR/sdks"
 SDK_TMP_DIR=$(mktemp -d)
 
 echo "Installing dependencies..."
@@ -12,7 +12,7 @@ sudo apt-get update -y
 sudo apt-get install -y --no-install-recommends libtinfo6 curl unzip
 
 echo "Installing Theos..."
-git clone --recursive https://github.com/waruhachi/theos.git $THEOS_DEST_DIR
+git clone --recursive https://github.com/waruhachi/theos.git $THEOS_DIR
 
 echo "Downloading SDK repository..."
 curl -L "$SDK_REPO_URL" -o "$SDK_TMP_DIR/repo.zip"
@@ -29,6 +29,7 @@ if [[ -z "$sdk_paths" ]]; then
 fi
 
 echo "Copying SDK directories to $SDK_DEST_DIR..."
+mkdir -p "$SDK_DEST_DIR"
 for sdk_path in $sdk_paths; do
     cp -r "$sdk_path" "$SDK_DEST_DIR/"
 done
@@ -37,7 +38,7 @@ echo "All SDKs have been successfully copied to $SDK_DEST_DIR."
 
 echo "Installing Swift iOS toolchain"
 
-if [[ ! -x "$THEOS_DEST_DIR/toolchain/linux/iphone/bin/clang" ]]; then
+if [[ ! -x "$THEOS_DIR/toolchain/linux/iphone/bin/clang" ]]; then
 mkdir -p "$THEOS_DIR/toolchain"
 bash -c "curl -sL 'https://github.com/kabiroberai/swift-toolchain-linux/releases/download/v2.3.0/swift-5.8-ubuntu20.04.tar.xz' | tar -xJvf - -C '$THEOS_DIR/toolchain/'"
 fi
