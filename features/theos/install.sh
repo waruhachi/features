@@ -1,47 +1,58 @@
 #!/usr/bin/env bash
 
-set -euo pipefail
+set -e
 
-THEOS_DIR="${THEOS_DIR:-$HOME/theos}"
+THEOS_DEST_DIR="/home/vscode/theos"
+SDK_REPO_URL="https://github.com/waruhachi/sdks/archive/master.zip"
+SDK_DEST_DIR="$THEOS_DEST_DIR/sdks"
+SDK_TMP_DIR=$(mktemp -d)
 
+echo "Installing dependencies..."
 sudo apt-get update -y
-sudo apt-get install -y --no-install-recommends bash curl sudo git perl unzip make build-essential fakeroot rsync libxml2 ca-certificates xz-utils
+sudo apt-get install -y --no-install-recommends libtinfo6 curl unzip
 
-if [[ $EUID -eq 0 ]]; then
-  USERNAME="${USERNAME:-vscode}"
-  if ! id -u "$USERNAME" >/dev/null 2>&1; then
-    useradd -m -s /bin/bash "$USERNAME"
-  fi
-  su - "$USERNAME" -c "CI=1 THEOS='$THEOS_DIR' bash -c \"\$(curl -fsSL https://raw.githubusercontent.com/waruhachi/theos/master/bin/install-theos)\""
-else
-  CI=1 THEOS="$THEOS_DIR" bash -c "$(curl -fsSL https://raw.githubusercontent.com/waruhachi/theos/master/bin/install-theos)"
+echo "Installing Theos..."
+git clone --recursive https://github.com/waruhachi/theos.git $THEOS_DEST_DIR
+
+echo "Downloading SDK repository..."
+curl -L "$SDK_REPO_URL" -o "$SDK_TMP_DIR/repo.zip"
+
+echo "Extracting SDK repository..."
+unzip -q "$SDK_TMP_DIR/repo.zip" -d "$SDK_TMP_DIR"
+
+sdk_paths=$(find "$SDK_TMP_DIR" -type d -name "*.sdk")
+
+if [[ -z "$sdk_paths" ]]; then
+    echo "No SDKs found in the repository. Exiting."
+    rm -rf "$SDK_TMP_DIR"
+    exit 1
 fi
 
-echo "==> Installing Swift toolchain (x86_64)"
-sudo apt-get install -y --no-install-recommends libtinfo6
+echo "Copying SDK directories to $SDK_DEST_DIR..."
+for sdk_path in $sdk_paths; do
+    cp -r "$sdk_path" "$SDK_DEST_DIR/"
+done
 
-if [[ ! -x "$THEOS_DIR/toolchain/linux/iphone/bin/clang" ]]; then
-sudo -u "$USERNAME" mkdir -p "$THEOS_DIR/toolchain"
+echo "All SDKs have been successfully copied to $SDK_DEST_DIR."
 
-sudo -u "$USERNAME" bash -c "
-	curl -sL 'https://github.com/kabiroberai/swift-toolchain-linux/releases/download/v2.3.0/swift-5.8-ubuntu20.04.tar.xz' \
-	| tar -xJvf - -C '$THEOS_DIR/toolchain/'
-"
+echo "Installing Swift iOS toolchain"
+
+if [[ ! -x "$THEOS_DEST_DIR/toolchain/linux/iphone/bin/clang" ]]; then
+mkdir -p "$THEOS_DIR/toolchain"
+bash -c "curl -sL 'https://github.com/kabiroberai/swift-toolchain-linux/releases/download/v2.3.0/swift-5.8-ubuntu20.04.tar.xz' | tar -xJvf - -C '$THEOS_DIR/toolchain/'"
 fi
 
 if [[ -x "$THEOS_DIR/toolchain/linux/iphone/bin/clang" ]]; then
-echo "✅ Swift toolchain installed successfully."
+echo "Swift iOS toolchain installed successfully."
 else
-echo "❌ Swift toolchain install failed: clang not found at $THEOS_DIR/toolchain/linux/iphone/bin/clang"
-exit 7
+echo "Swift iOS toolchain install failed: clang not found at $THEOS_DIR/toolchain/linux/iphone/bin/clang"
+exit 1
 fi
 
-PROFILE_FILE="$HOME/.profile"
-if [[ $EUID -eq 0 ]]; then
-  PROFILE_FILE="/home/${USERNAME}/.profile"
-fi
+echo "Adding THEOS environment variable..."
+echo "export THEOS=/home/vscode/theos" >> /home/vscode/.bashrc
 
-grep -q '^export THEOS=' "$PROFILE_FILE" 2>/dev/null || echo "export THEOS=\"$THEOS_DIR\"" >> "$PROFILE_FILE"
+echo "Cleaning up temporary files..."
+rm -rf "$SDK_TMP_DIR"
 
-echo "✅ Theos installed at: $THEOS_DIR"
-echo "ℹ️  New shells will pick up THEOS from: $PROFILE_FILE"
+echo "Installation completed successfully!"
