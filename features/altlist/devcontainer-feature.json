@@ -1,0 +1,10 @@
+{
+	"id": "altlist",
+	"version": "1.0.0",
+	"name": "AltList",
+	"documentationURL": "https://github.com/waruhachi/features/altlist",
+	"description": "A modern AppList alternative.",
+	"dependsOn": {
+		"ghcr.io/waruhachi/features/theos:latest": {}
+	}
+}
