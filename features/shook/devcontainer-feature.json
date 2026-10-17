@@ -1,0 +1,10 @@
+{
+    "id": "shook",
+    "version": "1.0.0",
+    "name": "Shook",
+    "documentationURL": "https://github.com/waruhachi/features/shook",
+    "description": "Swift macros for hooking methods",
+    "dependsOn": {
+        "ghcr.io/waruhachi/features/theos:latest": {}
+    }
+}
